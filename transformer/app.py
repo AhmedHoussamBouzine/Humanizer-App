@@ -11,13 +11,15 @@ import numpy as np
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-# Load French SpaCy model globally
-try:
-    NLP_FR = spacy.load("fr_core_news_sm")
-except OSError:
-    print("Warning: French SpaCy model not found. Install with: python -m spacy download fr_core_news_sm")
-    NLP_FR = None
 
+
+def load_french_model():
+    try:
+        return spacy.load("fr_core_news_sm")
+    except OSError:
+        raise RuntimeError("French SpaCy model is required. Make sure it's installed.")
+
+NLP_FR = load_french_model()
 
 class EnhancedFrenchTextHumanizer:
     """

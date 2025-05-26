@@ -18,7 +18,7 @@ def load_french_model():
         return spacy.load("fr_core_news_sm")
     except OSError:
         raise RuntimeError("French SpaCy model is required. Make sure it's installed.")
-
+    
 NLP_FR = load_french_model()
 
 class EnhancedFrenchTextHumanizer:
